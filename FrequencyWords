@@ -1,0 +1,20 @@
+def FrequencyMap(Text , k):
+    freq = {}
+    n = len(Text)
+    for i in range(n - k + 1):
+        Pattern = Text[i:i + k]
+        freq[Pattern] = 0
+        for i in range(n - k + 1):
+            if Pattern == Text[i: i + k]:
+                freq[Pattern] += 1
+    return freq
+
+def FrequencyWords(Text , k):
+    words = []
+    freq = FrequencyMap(Text , k)
+    m = max(key.values())
+    for key in freq:
+        if freq[key] == m:
+            Pattern = key
+            words.append(Pattern)
+    return words
