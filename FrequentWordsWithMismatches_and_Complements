@@ -1,0 +1,82 @@
+def HamingDistance(Text1 , Text2):
+  n = len(Text1)
+  sum_ = 0
+  for i in range(0 , n):
+      if Text1[i] != Text2[i]:
+          sum_ += 1
+  return sum_
+
+def Neighbors(Pattern , d):
+    basic_unit = ["A" , "C" , "G" , "T"]
+    if d == 0:
+        return Pattern
+    if len(Pattern) == 1:
+        return ["A" ,"C" ,"G" ,"T"]
+    Neighborhood = []
+    SuffixNeighbors = Neighbors(Pattern[1:len(Pattern)], d)
+    begin_unit = Pattern[0]
+    for Text in SuffixNeighbors :
+        if HamingDistance(Pattern[1:len(Pattern)] , Text) < d:
+            for i in basic_unit:
+                Neighborhood.append(i + Text)
+        else:
+            Neighborhood.append(begin_unit + Text)
+    return Neighborhood
+
+def Reverse(Text):
+    return Text[::-1]
+
+def Complement(Text):
+    complement_str = ""
+    for i in Text:
+        if i == "A":
+            complement_str += "T"
+        if i == "T":
+            complement_str += "A"
+        if i == "G":
+            complement_str += "C"
+        if i == "C":
+            complement_str += "G"
+    return complement_str
+
+def Complement_Reverse(Pattern):
+    Pattern = Complement(Pattern)
+    Pattern = Reverse(Pattern)
+    return Pattern
+
+def FrequentWordsWithMismatches(Text , k, d):
+    Patterns = []
+    freqMap = {}
+    n = len(Text)
+    for i in range (n - k + 1):
+        Pattern = Text[i : i + k]
+        neighborhood = Neighbors(Pattern , d)
+        for j in range (len(neighborhood)):
+            neighbor = neighborhood[j]
+            neighbor_rc = Complement_Reverse(neighbor)
+            freqMap[neighbor] = 0
+            #print ( neighbor, freqMap[neighbor])
+            for t in range (n - k + 1):
+                if HamingDistance(neighbor, Text[t : t+k]) <= d :
+                    freqMap[neighbor] += 1
+            for t in range (n - k + 1):
+                if HamingDistance(neighbor_rc, Text[t : t+k]) <=d:
+                    freqMap[neighbor] += 1
+
+            #print ( neighbor , freqMap[neighbor])
+    m = max(freqMap.values())
+    print(m)
+    #for i in range(len(neighborhood)):
+    #    print(freqMap[i] , i)
+    for key in freqMap:
+       # print (freqMap[key])
+        if freqMap[key] == m:
+            Patterns.append(key)
+
+    return Patterns
+ 
+
+
+
+Text = "ACGTTGCATGTCGCATGATGCATGAGAGCT"
+print(FrequentWordsWithMismatches(Text , 4 , 1))
