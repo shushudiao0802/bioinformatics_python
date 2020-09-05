@@ -1,6 +1,0 @@
-# First, create a string variable called ori that is equal to the Vibrio cholerae ori
-# Then, print the length of ori
-
-ori=input()
-x = len(ori)
-print(x)
