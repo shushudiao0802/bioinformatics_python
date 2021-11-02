@@ -1,0 +1,269 @@
+chr1_len = 10
+chr2_len = 20
+chr3_len = 30
+chr4_len = 40
+chr5_len = 50
+total_len = chr1_len + chr2_len + chr3_len + chr4_len + chr5_len
+#print total_len  //这么写是不符合语法的 , 括号是指格式，配置的时候需要带上括号
+print (total_len)
+print ("序列总长:" , total_len)
+mean_len = total_len / 4
+print ("平均长度:" , mean_len)
+
+#````````````````
+##list
+#````````````````
+chr_len = [10 , 20 , 30 , 40 , 50]
+chr_len[0]
+chr_len[1]
+chr_len[2]
+chr_len[3]
+chr_len[4]
+chr_len[5]
+chr_len[0:5]
+chr_len[0:4]
+chr_len[2:4]
+chr_len[2:5]
+chr_len[3:9]
+
+n = len(chr_len)
+print (n)
+
+#`````````````````````
+#循环以及调用函数
+#`````````````````````
+total_len = 0
+for i in chr_len:
+  total_len += i
+print (total_len)
+print ("序列总长:" , sum(chr_len))
+print ("平均长度:" , total_len / 5)
+
+#`````````````````````
+#字典   键-值 对 key【键】value【值】items【对】
+#`````````````````````
+chr_len = {"chr1_len":10,"chr2_len":20,"chr3_len":30,"chr4_len":40,"chr5_len":50}
+chr_len["chr1_len"]
+chr_len["chr4_len"]
+chr_len.keys()
+chr_len.values()
+chr_len.items()
+print (len(chr_len))
+sum_len = sum(chr_len.values())
+mean_len = sum_len / 5
+print ("序列总长:" , sum_len)
+print ("平均长度:" , mean_len)
+
+max_key=""
+max_values=0
+for k,v in chr_len.items():
+  if ( v > max_values):
+    max_values = v
+    max_key = k
+print ("the max key is:",k)
+print ("the max value is:",v)
+
+#``````````````````
+#自定义函数
+#``````````````````
+def get_max_length_of_dic(dict):
+  max_key=""
+  max_values=0
+  for k,v in dict.items():
+    if v > max_values:
+      max_values = v
+      max_key = k
+  return max_key
+
+print ("the max key is:", get_max_length_of_dic(chr_len))
+
+#```````````````````````````
+#变量类型
+#```````````````````````````
+i=10
+type(i)
+i="STRARRAARFA"
+type(i)
+i=3.14
+type(i)
+#数值型
+10 / 3
+10 // 3
+10 % 3
+2 ** 3
+a = 3
+b = 3
+a == b
+a != b
+a > b
+a < b
+a >= b
+a <= b
+a is b   #判断地址是否相同(result is same,TRUE)
+a = 300
+b = 300
+a is b   #判断地址是否相同(result is not same,FALSE)
+id(a)
+id(b)
+#导入包（模块）（库）
+import math
+math.ceil(3.1415824)
+math.floor(3.1415833)
+import numpy as np  #给库文件起了别名
+l = [1,2,3,4,5]
+np.mean(l)
+import random as rd
+rd.randint(1,100)
+rd.uniform(1,100) #生成随机实数
+rd.choice(l) #从序列的元素中随机挑选一个元素
+rd.sample(l,3) #随机抽样3个
+
+#单引号双引号 ; 没有什么实际差别 ; 多行处理 要用 3 引号
+str1="AAA"
+str2='AAA'
+str3=''' str1: AAAAAAAAAAAA
+SSSSSSSSSSSSSSSS
+DDDDDDDDDDDDDDDDD
+UUUUUUUUUUUUUUUUU '''
+str4=' I " m songrunxian'
+a='hello'
+b='world'
+total_len = 12
+print ("total:",total_len)
+print ("total:" + str(total_len))
+a="hello"
+a
+a[0]
+a[1]
+a[2]
+a[3]
+a[4]
+a[5]
+a[1:5]
+a[1:4]
+'o' not in a[1:5]
+'l' in a[1:4]
+
+str='Songrunxian'
+str.center(40)
+str.ljust(40)
+str.rjust(40)
+str.upper()
+str.lower()
+s='2322345OOOIundnfbfw'
+s.isdigit()
+s.isalpha()
+s.isalnum()
+s.index('0')
+s.find('0')
+s = 'hello i am srx'
+t = ['hello','i','am','sssrxsfe']
+s.split(' ')
+' '.join(t)
+'-'.join(t)
+
+
+l = [1,2,3,4,5]
+t = (1,2,3,4,5)
+id(l)
+id(t)
+l.append(10)
+t=(1,2,3,4,5,10)
+id(l)
+id(t)
+l.append(20)
+l.append([20,30])
+l.extend([20,30])
+l.insert(3,100)
+
+del l[8]
+l.pop() #弹出列表尾元素
+l.remove(4)
+del l
+
+l[3] = 44
+
+t
+l
+t[0]
+t[1]
+t[2:4]
+
+sorted(l)
+sorted(t)
+l
+t
+l.sort()
+l
+
+dict={'chr1':10,'chr2':13,'chr3':16,'chr4':100}
+dict['chrM'] = 99
+dict
+
+dict0={'chr6':100,'chr7':999}
+dict.update(dict0)
+dict
+
+del dict['chr7']
+dict.pop('chr6')
+dict.popitem()
+
+dict['chr1']=10000000
+dict['chr1']
+dict.get('chr1','We don"t have this element')
+dict.get('chr100','We don"t have this element')
+#lambda是一个匿名函数,按照键排序
+sorted(dict.items(), key = lambda x:x[0])
+#lambda是一个匿名函数,按照值排序
+sorted(dict.items(), key = lambda x:x[1])
+
+s
+s1
+s=set('AAAAAAASSSSSSDERF')
+s1={'A','X','C','M','B'}
+
+s1.add('YYYY')
+s1.update(s)
+
+s1.discard('M')
+s1.remove('B')
+s1.pop()
+s1.clear()
+
+l=['A','C','B','A']
+l=list(set(l))
+
+s1=set('AAAAAAAAAASDDDDDDDDCFRWTTEGBD')
+s2=set('NNNCDHHHDDBSBDYEDBFEJ')
+s1 & s2
+s1 | s2
+s1-s2
+s2-s1
+s1^s2
+(s1-s2) | (s2-s1)
+
+a = 100000
+b = 100000
+a == b
+id(a)
+id(b)
+a is b
+## hello 属于简单字符串
+a = 'hello'
+b = 'hello'
+a == b
+id(a)
+id(b)
+a is b
+
+def chan(x):
+  x.append(10)
+
+a = [1,2,3]
+chan(a)
+
+def chang(x):
+  x[0] = 10
+
+a = (1,2,3) #这样是无法操作的
+chang(a)
