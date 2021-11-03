@@ -1,4 +1,28 @@
 import sys
+
+def Nx0(l,x):
+  '''
+  this function has two arguments:
+  the first one is a list of length of chr
+  the second one is the Nx0's number
+  and we will return the index of Nx0 and Nx0
+  '''
+  totoal_len = sum(len_dict.values())
+  ind = 0
+  nx0 = 0
+  chrsum = 0
+  persent = float(x[1:])*0.01
+  chr_list = len_dict.values()
+  chr_list1 = sorted(chr_list,reverse=True)
+  for k,v in enumerate(chr_list1,start = 1):
+    chrsum += v
+    if (chrsum >= totoal_len * persent):
+      ind=k
+      nx0=v
+      break
+      
+  return ind,nx0
+
 ##############################
 #读取文件
 ##############################
@@ -30,26 +54,3 @@ print('最长序列:{:d} and longest id is:{}'.format(longest_len,lengest_id))
 for n in ('N50','N60','N70','N80','N90','N100'):
   ind, nx0 = Nx0(len_dict.values(),n)
   print('{:s} is {:d},and id is {:d}'.format(n,nx0,ind))
-
-def Nx0(l,x):
-  '''
-  this function has two arguments:
-  the first one is a list of length of chr
-  the second one is the Nx0's number
-  and we will return the index of Nx0 and Nx0
-  '''
-  totoal_len = sum(len_dict.values())
-  ind = 0
-  nx0 = 0
-  chrsum = 0
-  persent = float(x[1:])*0.01
-  chr_list = len_dict.values()
-  chr_list1 = sorted(chr_list,reverse=True)
-  for k,v in enumerate(chr_list1,start = 1):
-    chrsum += v
-    if (chrsum >= totoal_len * persent):
-      ind=k
-      nx0=v
-      break
-      
-  return ind,nx0
